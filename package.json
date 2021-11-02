@@ -6,6 +6,7 @@
   "scripts": {
     "bob": "echo 'bob'",
     "dev": "nodemon server.js",
+    "start": "pwd && env | sort",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

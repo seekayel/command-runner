@@ -36,6 +36,13 @@ app.use('/npm/version', (req,res,next) => {
     out: runCmd(cmd)
   }).end()
 })
+app.use('/npm/run', (req,res,next) => {
+  var cmd = 'npm run'
+
+  res.json({
+    out: runCmd(cmd)
+  }).end()
+})
 app.use('/npm/bob', (req,res,next) => {
   var cmd = 'npm run bob'
 
