@@ -20,9 +20,12 @@ const app = express()
 // Run commands
 app.use('/run', (req,res,next) => {
 
+  var cmd = 'npm --verbose run bob'
+  // var cmd = 'npm --version'
+
   var out = ''
   try {
-    out = child_process.execSync('npm --version').toString().trim().replace(/\n+$/, "")
+    out = child_process.execSync(cmd).toString().trim().replace(/\n+$/, "")
   } catch(error) {
     out = error.toString()
   } finally {
