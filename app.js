@@ -15,14 +15,7 @@ const app = express()
 // }
 // app.use(express.static('public', options))
 
-
-// #############################################################################
-// Run commands
-app.use('/run', (req,res,next) => {
-
-  var cmd = 'npm --verbose run bob'
-  // var cmd = 'npm --version'
-
+function runCmd(cmd) {
   var out = ''
   try {
     out = child_process.execSync(cmd).toString().trim().replace(/\n+$/, "")
@@ -31,10 +24,24 @@ app.use('/run', (req,res,next) => {
   } finally {
     console.log(out)
   }
+  return out
+}
+
+// #############################################################################
+// Run commands
+app.use('/npm/version', (req,res,next) => {
+  var cmd = 'npm --version'
+
   res.json({
-    out
-  })
-  .end()
+    out: runCmd(cmd)
+  }).end()
+})
+app.use('/npm/bob', (req,res,next) => {
+  var cmd = 'npm run bob'
+
+  res.json({
+    out: runCmd(cmd)
+  }).end()
 })
 
 
