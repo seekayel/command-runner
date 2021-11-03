@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "bob": "echo 'bob'",
-    "build": "echo 'done run'",
+    "build": "ls -l ./node_modules/",
     "dev": "nodemon server.js",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
